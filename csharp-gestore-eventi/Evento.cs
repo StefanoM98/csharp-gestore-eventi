@@ -8,50 +8,50 @@ namespace csharp_gestore_eventi
 {
     public class Evento
     {
-        private string Titolo;
-        private DateTime Data;
-        private int Capienza;
-        private int PostiPrenotati;
+        private string titolo;
+        private DateTime data;
+        private int capienza;
+        private int postiPrenotati;
 
-        public Evento(string titolo, DateTime data, int capienza, int postiPrenotati = 0) 
+        public Evento(string Titolo, DateTime Data, int Capienza, int PostiPrenotati = 0) 
         {
-            this.Titolo = titolo;
-            this.Data = data;
-            this.Capienza = capienza;
-            if (this.Capienza < 0)
+            this.titolo = Titolo;
+            this.data = Data;
+            this.capienza = Capienza;
+            if (this.capienza < 0)
             {
                 throw new Exception("La capienza non puo essere un numero negativo");
             }
-            this.PostiPrenotati = postiPrenotati;
+            this.postiPrenotati = PostiPrenotati;
         } 
 
         //GETTER
 
         public string GetTitolo()
         {
-            return this.Titolo;
+            return this.titolo;
         }
 
         public DateTime GetDate()
         { 
-            return this.Data;
+            return this.data;
         }   
 
         public int GetCapienza()
         {
-            return this.Capienza;
+            return this.capienza;
         }
 
         public int GetPostiPrenotati()
         {
-            return PostiPrenotati;
+            return postiPrenotati;
         }
 
         //SETTER
 
         public void SetTitolo(string titolo)
         {
-            this.Titolo= titolo;
+            this.titolo= titolo;
             
             if (titolo == "")
             {
@@ -61,7 +61,7 @@ namespace csharp_gestore_eventi
 
         public void SetData(DateTime data)
         {
-            this.Data= data;
+            this.data= data;
 
             DateTime dataAttuale = DateTime.Now;
             
@@ -74,17 +74,17 @@ namespace csharp_gestore_eventi
         //METODI
         public void PrenotaPostiEvento(int postiUtente)
         {
-            if(PostiPrenotati > this.Capienza)
+            if(postiPrenotati > this.capienza)
             {
                 throw new ArgumentException("I posti sono gia tutti prenotati, riprova il prossimo evento");
             } 
-            else if (this.Data < DateTime.Now)
+            else if (this.data < DateTime.Now)
             {
                 throw new ArgumentException("L'evento è terminato mi dispiace");
             } 
             else
             {
-                PostiPrenotati += postiUtente;
+                postiPrenotati = postiUtente;
             }
         }
 
@@ -94,19 +94,19 @@ namespace csharp_gestore_eventi
             {
                 throw new ArgumentException("Il numero dei posti disdetti non può essere minore di 0!");
             }
-            else if (postiDisdetti > this.PostiPrenotati)
+            else if (postiDisdetti > this.postiPrenotati)
             {
                 throw new ArgumentException("Il numero dei posti che vuoi disdire è maggiore al numero dei posti prenotati!");
             }
             else
             {
-                this.PostiPrenotati -= postiDisdetti;
+                this.postiPrenotati -= postiDisdetti;
             }
         }
 
         public override string ToString()
         {
-            string infoEvento = Data.ToString("dd/MM/yyyy") + " - " + this.Titolo;
+            string infoEvento = data.ToString("dd/MM/yyyy") + " - " + this.titolo;
             return infoEvento;
         }
     }
