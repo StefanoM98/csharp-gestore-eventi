@@ -19,7 +19,6 @@
 
             Evento evento = new Evento(nome, data, maxPosti, posti);
 
-            evento.PrenotaPostiEvento(posti);
             Console.WriteLine($"Numero di posti disponibili: {maxPosti - evento.GetPostiPrenotati()}");
             Console.WriteLine($"Numero di posti prenotati: {evento.GetPostiPrenotati()}");
 
@@ -42,7 +41,6 @@
                     Console.WriteLine($"Posti disponibili: {maxPosti - evento.GetPostiPrenotati()}");
 
                     Console.WriteLine($"Posti prenotati: {evento.GetPostiPrenotati()}");
-                    break;
                 } 
                 else if ( risposta == "no" ) 
                 {
@@ -51,7 +49,6 @@
                 }
             }
 
-            
         }
     }
 }

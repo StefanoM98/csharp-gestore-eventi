@@ -84,7 +84,7 @@ namespace csharp_gestore_eventi
             } 
             else
             {
-                postiPrenotati = postiUtente;
+                postiPrenotati += postiUtente;
             }
         }
 
