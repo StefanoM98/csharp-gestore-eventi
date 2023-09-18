@@ -11,9 +11,9 @@ namespace csharp_gestore_eventi
         private string Titolo;
         private DateTime Data;
         private int Capienza;
-        private static int PostiPrenotati = 0;
+        private int PostiPrenotati;
 
-        public Evento(string titolo, DateTime data, int capienza) 
+        public Evento(string titolo, DateTime data, int capienza, int postiPrenotati = 0) 
         {
             this.Titolo = titolo;
             this.Data = data;
@@ -22,8 +22,8 @@ namespace csharp_gestore_eventi
             {
                 throw new Exception("La capienza non puo essere un numero negativo");
             }
-            PostiPrenotati++;
-        }
+            this.PostiPrenotati = postiPrenotati;
+        } 
 
         //GETTER
 
@@ -71,9 +71,43 @@ namespace csharp_gestore_eventi
             }
         }
 
-        public void PrenotaPostiEvento()
+        //METODI
+        public void PrenotaPostiEvento(int postiUtente)
         {
-            Console.WriteLine("Quanti posti vuoi prenotare?");
+            if(PostiPrenotati > this.Capienza)
+            {
+                throw new ArgumentException("I posti sono gia tutti prenotati, riprova il prossimo evento");
+            } 
+            else if (this.Data < DateTime.Now)
+            {
+                throw new ArgumentException("L'evento è terminato mi dispiace");
+            } 
+            else
+            {
+                PostiPrenotati += postiUtente;
+            }
+        }
+
+        public void DisdiciPosti(int postiDisdetti)
+        {
+            if (postiDisdetti < 0)
+            {
+                throw new ArgumentException("Il numero dei posti disdetti non può essere minore di 0!");
+            }
+            else if (postiDisdetti > this.PostiPrenotati)
+            {
+                throw new ArgumentException("Il numero dei posti che vuoi disdire è maggiore al numero dei posti prenotati!");
+            }
+            else
+            {
+                this.PostiPrenotati -= postiDisdetti;
+            }
+        }
+
+        public override string ToString()
+        {
+            string infoEvento = Data.ToString("dd/MM/yyyy") + " - " + this.Titolo;
+            return infoEvento;
         }
     }
 }
