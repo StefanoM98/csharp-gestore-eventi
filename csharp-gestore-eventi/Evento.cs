@@ -106,7 +106,7 @@ namespace csharp_gestore_eventi
 
         public override string ToString()
         {
-            string infoEvento = data.ToString("dd/MM/yyyy") + " - " + this.titolo;
+            string infoEvento = data.ToString("dd/MM/yyyy") + " - " + this.titolo + "\n";
             return infoEvento;
         }
     }

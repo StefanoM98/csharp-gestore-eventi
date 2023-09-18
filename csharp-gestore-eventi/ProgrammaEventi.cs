@@ -70,6 +70,9 @@ namespace csharp_gestore_eventi
                 if (dataEvento == evento.GetDate())
                 {
                     listaEventiPerData.Add(evento);
+                } else
+                {
+                    Console.WriteLine("Non ci sono eventi per quella data che hai scelto!");
                 }
             }
             foreach(Evento evento in listaEventiPerData)
@@ -100,6 +103,7 @@ namespace csharp_gestore_eventi
                 programmaEventi += evento.ToString();
             }
             programmaEventi += "\n";
+
             return programmaEventi;
         }
     }

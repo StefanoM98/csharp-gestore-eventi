@@ -73,11 +73,39 @@
 
             Console.WriteLine("------------------------");
 
-            Console.Write($"Per quale data vuoi cercare gli eventi che sono in programma?");
+            Console.Write($"Per quale data vuoi cercare gli eventi che sono in programma: ");
             DateTime dataEvento = DateTime.Parse(Console.ReadLine());
 
             nuovoProgramma.EventiPerData(dataEvento);
 
+
+            Console.WriteLine("Conferenze!!");
+
+            Console.Write("Aggiungiamo ora una conferenza inserendo il nome: ");
+
+            string conferenza = Console.ReadLine();
+
+            Console.Write("Inserisci la data della conferenza(gg/mm/yyyy): ");
+
+            DateTime dataConferenza = DateTime.Parse(Console.ReadLine());
+
+            Console.Write("Inserisci i posti della tua conferenza: ");
+
+            int postiConferenza = int.Parse(Console.ReadLine());
+            int postiPrenotati = 0;
+
+            Console.Write("Inserisci il nome del relatore: ");
+            string nomeRelatore = Console.ReadLine();
+
+            Console.Write("Inserisci il prezzo della conferenza: ");
+            double costoConferenza = double.Parse(Console.ReadLine());
+
+            Conferenza nuovaConferenza = new Conferenza(conferenza, dataConferenza, postiConferenza, postiPrenotati, nomeRelatore, costoConferenza);
+
+            nuovoProgramma.AggiungiEvento(nuovaConferenza);
+
+            Console.WriteLine("Ecco il programma eventi con anche le conferenze!");
+            Console.WriteLine(nuovoProgramma.ToString());
         }
     }
 }
