@@ -66,7 +66,17 @@
                     Console.WriteLine($"Errore: {ex.Message}");
                 }
             }
+            Console.WriteLine("------------------------");
+
             Console.WriteLine($"Numero di eventi programmati: {nuovoProgramma.GetNumeriEventi()}");
+            Console.WriteLine($"{nuovoProgramma.ToString()}");
+
+            Console.WriteLine("------------------------");
+
+            Console.Write($"Per quale data vuoi cercare gli eventi che sono in programma?");
+            DateTime dataEvento = DateTime.Parse(Console.ReadLine());
+
+            nuovoProgramma.EventiPerData(dataEvento);
 
         }
     }

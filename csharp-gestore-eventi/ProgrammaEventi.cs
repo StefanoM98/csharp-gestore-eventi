@@ -74,7 +74,7 @@ namespace csharp_gestore_eventi
             }
             foreach(Evento evento in listaEventiPerData)
             {
-                Console.WriteLine(dataEvento.ToString("dd/MM/yyyy") + " - " + this.titolo);
+                Console.WriteLine(dataEvento.ToString("dd/MM/yyyy") + " - " + evento.GetTitolo());
             }
         }
 
@@ -93,12 +93,13 @@ namespace csharp_gestore_eventi
 
         public override string ToString()
         {
-            string programmaEventi = $"Titolo programma: {this.titolo}";
+            string programmaEventi = $"Titolo programma: {this.titolo} \n";
 
             foreach (Evento evento in eventi)
             {
                 programmaEventi += evento.ToString();
             }
+            programmaEventi += "\n";
             return programmaEventi;
         }
     }
