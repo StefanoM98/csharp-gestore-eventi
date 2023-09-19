@@ -7,27 +7,39 @@
 
             Console.Write("Inserisci il nome del Programma degli eventi: ");
             string nomeProgramma = Console.ReadLine();
+            if (nomeProgramma == "")
+            {
+                throw new Exception("Il nome del programma non può essere nullo");
+            }
             Console.Write("Inserisci ora il numero di eventi che vuoi dichiarare: ");
             int numeriProgramma = int.Parse(Console.ReadLine());
-
+            if (numeriProgramma < 0)
+            {
+                throw new Exception("Il numero dei programmi non può essere minore di 0");
+            }
             ProgrammaEventi nuovoProgramma = new ProgrammaEventi(nomeProgramma, numeriProgramma);
 
             for (int i = 0; i < numeriProgramma; i++)
             {
-                Console.Write("Qual è il nome dell'evento: ");
-                string nome = Console.ReadLine();
-
-                Console.Write("Inserisci ora la data dell'evento (gg/MM/aaaa): ");
-                DateTime data = DateTime.Parse(Console.ReadLine());
-
-                Console.Write("Inserisci ora la capienza massima dell'evento: ");
-                int maxPosti = int.Parse(Console.ReadLine());
-
-                Console.Write("Quanti posti vuoi prenotare: ");
-                int posti = int.Parse(Console.ReadLine());
-
                 try
                 {
+
+                    Console.Write("Qual è il nome dell'evento: ");
+                    string nome = Console.ReadLine();
+
+                    Console.Write("Inserisci ora la data dell'evento (gg/MM/aaaa): ");
+                    DateTime data = DateTime.Parse(Console.ReadLine());
+
+                    Console.Write("Inserisci ora la capienza massima dell'evento: ");
+                    int maxPosti = int.Parse(Console.ReadLine());
+
+                    Console.Write("Quanti posti vuoi prenotare: ");
+                    int posti = int.Parse(Console.ReadLine());
+
+
+
+
+
                     Evento evento = new Evento(nome, data, maxPosti, posti);
 
                     List<Evento> listaDiEventi = new List<Evento> { evento };

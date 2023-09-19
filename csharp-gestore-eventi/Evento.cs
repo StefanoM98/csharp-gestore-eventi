@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,11 +13,22 @@ namespace csharp_gestore_eventi
         private DateTime data;
         private int capienza;
         private int postiPrenotati;
+        public string pippo { 
+            get { 
+                return _pippo; 
+                } 
+            set { 
+                _pippo = value; 
+                } 
+            }
+
+        private string _pippo;
 
         public Evento(string Titolo, DateTime Data, int Capienza, int PostiPrenotati = 0) 
         {
-            this.titolo = Titolo;
-            this.data = Data;
+            pippo = "ciao";
+            SetTitolo(Titolo);
+            SetData(Data);
             this.capienza = Capienza;
             if (this.capienza < 0)
             {
@@ -51,24 +63,26 @@ namespace csharp_gestore_eventi
 
         public void SetTitolo(string titolo)
         {
-            this.titolo= titolo;
-            
             if (titolo == "")
             {
-                throw new ArgumentException("Devi inserire il titolo, non possiamo avviare un evento senza titolo");
+                throw new ArgumentException("Il titolo non puo essere vuoto");
+            } else if (titolo == null)
+            {
+                throw new ArgumentException("Il titolo non può essere nullo");
             }
+            this.titolo = titolo;
+            
         }
 
         public void SetData(DateTime data)
         {
-            this.data= data;
-
-            DateTime dataAttuale = DateTime.Now;
-            
-            if(data < dataAttuale)
+            if(data < DateTime.Now)
             {
                 throw new ArgumentException("La data non puo essere antecedente rispetto alla data odierna, ricorda di inserire una data futura.");
             }
+
+            this.data = data;
+ 
         }
 
         //METODI
