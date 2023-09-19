@@ -65,10 +65,10 @@ namespace csharp_gestore_eventi
         {
             if (titolo == "")
             {
-                throw new ArgumentException("Il titolo non puo essere vuoto");
+                throw new ArgumentException("Il titolo non puo essere vuoto. Chiudi il programma e riprova!");
             } else if (titolo == null)
             {
-                throw new ArgumentException("Il titolo non può essere nullo");
+                throw new ArgumentException("Il titolo non può essere nullo. Chiudi il programma e riprova!");
             }
             this.titolo = titolo;
             
